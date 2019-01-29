@@ -6,6 +6,8 @@ namespace mplsRenters
     {
         static void Main(string[] args)
         {
+            string name, address, regionOfCity;
+            int floorCount;
             Apartment aApartment = new Apartment(); //Instantiation -Create new instance from the Apartment Class
             aApartment.Name = "Nord Haus";
             aApartment.Address = "315 First Ave NE";
@@ -22,20 +24,20 @@ namespace mplsRenters
             var x = 0;
             while(x < apartments.Length)
             {
-                //Create the new instance
-                apartments[x] = new Apartment();
+               
                 Console.WriteLine("Please enter the name of the apartment");
-                apartments[x].Name = Console.ReadLine();
+                name = Console.ReadLine();
 
                 Console.WriteLine("Please enter the address");
-                apartments[x].Address = Console.ReadLine();
+                address = Console.ReadLine();
 
                 Console.WriteLine("Please enter the floor count of the apartment");
-                apartments[x].FloorCount = Convert.ToInt32(Console.ReadLine());
+                floorCount = Convert.ToInt32(Console.ReadLine());
 
                 Console.WriteLine("Please enter the region of city for aparment");
-                apartments[x].RegionOfCity = Console.ReadLine();
+                regionOfCity = Console.ReadLine();
 
+                apartments[x] = new Apartment(name, address, floorCount, regionOfCity);
                 x++;
 
             }
@@ -55,7 +57,20 @@ namespace mplsRenters
         private readonly double ESTIMATED_RENT_ONE = 1200.00;
         private readonly double ESTIMATED_RENT_TWO = 2000.00;
         private readonly double ESTIMATED_RENT_THREE = 4000.00;
+        //Default Constructor
+        public Apartment()
+        {
 
+        }
+
+        //Overloaded Constructor
+        public Apartment(string Name, string Address, int FloorCount, string RegionOfCity)
+        {
+            this.Name = Name;
+            this.Address = Address;
+            this.FloorCount = FloorCount;
+            this.RegionOfCity = RegionOfCity;
+        }
         public double estimatedRent()
         {
             return 3.00;
