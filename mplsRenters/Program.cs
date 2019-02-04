@@ -20,11 +20,11 @@ namespace mplsRenters
             aApartment_Two.FloorCount = 18;
             aApartment_Two.RegionOfCity = "South";
 
-            Apartment [] apartments= new Apartment[2];
+            Apartment[] apartments = new Apartment[2];
             var x = 0;
-            while(x < apartments.Length)
+            while (x < apartments.Length)
             {
-               
+
                 Console.WriteLine("Please enter the name of the apartment");
                 name = Console.ReadLine();
 
@@ -80,6 +80,81 @@ namespace mplsRenters
         {
             return String.Format("Name: {0} \n, Address: {1} \n, FloorCount: {2} \n, Region of City: {3} \n", Name, Address, FloorCount, RegionOfCity);
         }
+    }
+
+    abstract class User
+    {
+        protected string Fname { get; set; }
+        protected string Lname { get; set; }
+        protected string Phone { get; set; }
+        protected string Email { get; set; }
+
+
+        /**
+         * Statements to format phone.  
+         * Use the substring and decision making logic to reset any value that is passed during instantiation
+        **/
+        protected abstract void formatePhone();
+
+
+        /**
+         * Agents and profiles will have a classification that will have different criteria for how a classification
+         * is assigned
+         * */
+        protected abstract void determineClassification();
+        
+
+
+
+
+
+    }
+
+
+     class Agent : User
+    {
+        public string AgentStatus { get; set; }
+        public string AgentCompanyName { get; set; }
+        public string Classification { get; set; }
+
+
+
+        protected override void determineClassification()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void formatePhone()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    class Profile : User
+    {
+        public DateTime ExpectedMoveDate { get; set; }
+        public string PreferredRegion { get; set; }
+        public int BedCountSelection { get; set; }
+        public int BathCountSelection { get; set; }
+        public string Classification { get; }
+
+        public double UpperRentValue { get; set; }
+        public double LowerRentValue { get; set; }
+
+
+
+        protected override void determineClassification()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void formatePhone()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
     }
 }
 
