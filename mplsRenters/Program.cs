@@ -6,7 +6,7 @@ namespace mplsRenters
     {
         static void Main(string[] args)
         {
-            string name, address, regionOfCity;
+            string firstName, lastName, phone, email, agentStatus, agentCompany;
             int floorCount;
             Apartment aApartment = new Apartment(); //Instantiation -Create new instance from the Apartment Class
             aApartment.Name = "Nord Haus";
@@ -20,31 +20,39 @@ namespace mplsRenters
             aApartment_Two.FloorCount = 18;
             aApartment_Two.RegionOfCity = "South";
 
-            Apartment[] apartments = new Apartment[2];
+            Agent[] agents = new Agent[2];
             var x = 0;
-            while (x < apartments.Length)
+            while (x < agents.Length)
             {
 
-                Console.WriteLine("Please enter the name of the apartment");
-                name = Console.ReadLine();
+                Console.WriteLine("Please enter first name");
+                firstName = Console.ReadLine();
 
-                Console.WriteLine("Please enter the address");
-                address = Console.ReadLine();
+                Console.WriteLine("Please enter last name");
+                lastName = Console.ReadLine();
 
-                Console.WriteLine("Please enter the floor count of the apartment");
-                floorCount = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Please enter phone");
+                phone = Console.ReadLine();
 
-                Console.WriteLine("Please enter the region of city for aparment");
-                regionOfCity = Console.ReadLine();
+                Console.WriteLine("Please enter email");
+                email = Console.ReadLine();
 
-                apartments[x] = new Apartment(name, address, floorCount, regionOfCity);
+                Console.WriteLine("Please enter agent status");
+                agentStatus = Console.ReadLine();
+
+                Console.WriteLine("Please enter agent company name");
+                agentCompany = Console.ReadLine();
+
+                agents[x] = new Agent(firstName, lastName, phone, email, agentStatus,agentCompany);
                 x++;
 
             }
 
-            Console.WriteLine(apartments[0].ToString());
-            Console.WriteLine(apartments[1].ToString());
+            Console.WriteLine(agents[0].AgentStatus);
+            Console.WriteLine(agents[1].AgentStatus);
 
+
+   
 
         }
     }
@@ -89,6 +97,13 @@ namespace mplsRenters
         protected string Phone { get; set; }
         protected string Email { get; set; }
 
+        public User(string Fname, string Lname, string phone, string Email)
+        {
+            this.Fname = Fname;
+            this.Lname = Lname;
+            Phone = phone;
+            this.Email = Email;
+        }
 
         /**
          * Statements to format phone.  
@@ -117,7 +132,16 @@ namespace mplsRenters
         public string AgentCompanyName { get; set; }
         public string Classification { get; set; }
 
+        public Agent(string Fname, string Lname, string phone, string Email, string AgentStatus, string AgentCompanyName) : base(Fname, Lname, phone, Email)
+        {
+            this.Fname = Fname;
+            this.Lname = Lname;
+            Phone = phone;
+            this.Email = Email;
+            this.AgentStatus = AgentStatus;
+            this.AgentCompanyName = AgentCompanyName;
 
+        }
 
         protected override void determineClassification()
         {
@@ -141,7 +165,15 @@ namespace mplsRenters
         public double UpperRentValue { get; set; }
         public double LowerRentValue { get; set; }
 
+        public Profile(string Fname, string Lname, string phone, string Email) : base(Fname, Lname, phone, Email)
+        {
+            this.Fname = Fname;
+            this.Lname = Lname;
+            Phone = phone;
+            this.Email = Email;
+           
 
+        }
 
         protected override void determineClassification()
         {
