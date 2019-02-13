@@ -10,7 +10,7 @@ namespace mplsRenters
         {
             string name, address, regionOfCity;
             int floorCount;
-    
+
             //Apartment aApartment = new Apartment(); //Instantiation -Create new instance from the Apartment Class
             //aApartment.Name = "Nord Haus";
             //aApartment.Address = "315 First Ave NE";
@@ -23,49 +23,27 @@ namespace mplsRenters
             //aApartment_Two.FloorCount = 18;
             //aApartment_Two.RegionOfCity = "South";
 
+            //string filePath = @"C:\Users\fulchr\Google Drive\Dunwoody\CWEB2010\Spring 2019\csharp_projects\mplsRenters\apartment_list.csv";
+
+            string filePath = Directory.GetCurrentDirectory();
+            string stepBackOne = Directory.GetParent(filePath).ToString();
+            string stepBackTwo = Directory.GetParent(stepBackOne).ToString();
+            string stepBackThree = Directory.GetParent(stepBackTwo).ToString();
+            Console.WriteLine(stepBackThree);
+
+            string adjustedFilePath = $@"{stepBackThree}\apartment_list.csv";
+            Console.WriteLine(adjustedFilePath);
 
 
 
-
-
-            Apartment[] apartments = new Apartment[2];
-            var x = 0;
-            while (x < apartments.Length)
-            {
-
-                Console.WriteLine("Please enter apartment name");
-                name = Console.ReadLine();
-
-                Console.WriteLine("Please enter address");
-                address = Console.ReadLine();
-
-                Console.WriteLine("Please enter floor count");
-                floorCount = Convert.ToInt32(Console.ReadLine());
-
-                Console.WriteLine("Please enter Region of city");
-                regionOfCity = Console.ReadLine();
-
-
-                try
-                {
-                    apartments[x] = new Apartment(name, address, floorCount, regionOfCity);
-                }catch(Exception e)
-                {
-                    Console.WriteLine( e.Message );
-                    apartments[x] = new Apartment(name, address, floorCount, "None");
-                }
-                x++;
-
-            }
-
-            Console.WriteLine(apartments[0].ToString());
-            Console.WriteLine(apartments[1].ToString());
-
-
-   
 
         }
-    }
+
+   
+   
+
+ }
+    
  
     public class CityRegionException : Exception
     {
