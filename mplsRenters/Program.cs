@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace mplsRenters
 {
@@ -6,8 +8,9 @@ namespace mplsRenters
     {
         static void Main(string[] args)
         {
-            string name, address, lastName, phone, email, regionOfCity;
+            string name, address, regionOfCity;
             int floorCount;
+    
             //Apartment aApartment = new Apartment(); //Instantiation -Create new instance from the Apartment Class
             //aApartment.Name = "Nord Haus";
             //aApartment.Address = "315 First Ave NE";
@@ -20,6 +23,11 @@ namespace mplsRenters
             //aApartment_Two.FloorCount = 18;
             //aApartment_Two.RegionOfCity = "South";
 
+
+
+
+
+
             Apartment[] apartments = new Apartment[2];
             var x = 0;
             while (x < apartments.Length)
@@ -27,8 +35,6 @@ namespace mplsRenters
 
                 Console.WriteLine("Please enter apartment name");
                 name = Console.ReadLine();
-
- 
 
                 Console.WriteLine("Please enter address");
                 address = Console.ReadLine();
@@ -61,106 +67,6 @@ namespace mplsRenters
         }
     }
  
-
-    abstract class User
-    {
-        protected string Fname { get; set; }
-        protected string Lname { get; set; }
-        protected string Phone { get; set; }
-        protected string Email { get; set; }
-
-        public User(string Fname, string Lname, string phone, string Email)
-        {
-            this.Fname = Fname;
-            this.Lname = Lname;
-            Phone = phone;
-            this.Email = Email;
-        }
-
-        /**
-         * Statements to format phone.  
-         * Use the substring and decision making logic to reset any value that is passed during instantiation
-        **/
-        protected abstract void formatePhone();
-
-
-        /**
-         * Agents and profiles will have a classification that will have different criteria for how a classification
-         * is assigned
-         * */
-        protected abstract void determineClassification();
-        
-
-
-
-
-
-    }
-
-
-     class Agent : User
-    {
-        public string AgentStatus { get; set; }
-        public string AgentCompanyName { get; set; }
-        public string Classification { get; set; }
-
-        public Agent(string Fname, string Lname, string phone, string Email, string AgentStatus, string AgentCompanyName) : base(Fname, Lname, phone, Email)
-        {
-            this.Fname = Fname;
-            this.Lname = Lname;
-            Phone = phone;
-            this.Email = Email;
-            this.AgentStatus = AgentStatus;
-            this.AgentCompanyName = AgentCompanyName;
-
-        }
-
-        protected override void determineClassification()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override void formatePhone()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    class Profile : User
-    {
-        public DateTime ExpectedMoveDate { get; set; }
-        public string PreferredRegion { get; set; }
-        public int BedCountSelection { get; set; }
-        public int BathCountSelection { get; set; }
-        public string Classification { get; }
-
-        public double UpperRentValue { get; set; }
-        public double LowerRentValue { get; set; }
-
-        public Profile(string Fname, string Lname, string phone, string Email) : base(Fname, Lname, phone, Email)
-        {
-            this.Fname = Fname;
-            this.Lname = Lname;
-            Phone = phone;
-            this.Email = Email;
-           
-
-        }
-
-        protected override void determineClassification()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override void formatePhone()
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-    }
-
     public class CityRegionException : Exception
     {
         public CityRegionException(string aMessage) : base(aMessage)
