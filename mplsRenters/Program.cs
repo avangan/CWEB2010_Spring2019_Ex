@@ -41,21 +41,24 @@ namespace mplsRenters
 
                 FileStream file = new FileStream(adjustedFilePath, FileMode.Open, FileAccess.Read);
                 StreamReader read = new StreamReader(file);
+                string t = read.ReadLine();
+                Console.WriteLine(t + " This is the first Line");
 
-                while (!read.EndOfStream)
-                {
-                    try
-                    {
-                        //Serialize the objects into our program
-                        arrayOfValues = read.ReadLine().Split(',');
-                        listOfApartments.Add(new Apartment(arrayOfValues[0], arrayOfValues[1], Int32.Parse(arrayOfValues[2]), arrayOfValues[3]));
-                    }catch(Exception e)
-                    {
-                        Console.WriteLine(e.Message);
+                //while (!read.EndOfStream)
+                //{
+                //    try
+                //    {
+                //        //Serialize the objects into our program
+                //        //string t = read.ReadLine();
+                //        //Console.WriteLine(t);
+                //        //listOfApartments.Add(new Apartment(arrayOfValues[0], arrayOfValues[1], Int32.Parse(arrayOfValues[2]), arrayOfValues[3]));
+                //    }catch(Exception e)
+                //    {
+                //        Console.WriteLine(e.Message);
                        
-                    }
+                //    }
 
-                }
+                //}
                 read.Close();
                 file.Close();
 
